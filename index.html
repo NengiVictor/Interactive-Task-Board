@@ -16,6 +16,7 @@
                 <option value="Development">Development</option>
                 <option value="Design">Design</option>
             </select>
+            <button id="themeToggle">🌓</button>
         </div>
     </header>
 
@@ -36,17 +37,17 @@
         </form>
     </section>
 
-    <main class="board">
+<main class="board">
         <div class="column dropzone" data-status="todo" id="col-todo">
-            <h2>To Do</h2>
+            <h2>To Do <span id="count-todo">(0)</span></h2>
             <div class="task-list" id="list-todo"></div>
         </div>
         <div class="column dropzone" data-status="in-progress" id="col-in-progress">
-            <h2>In Progress</h2>
+            <h2>In Progress <span id="count-in-progress">(0)</span></h2>
             <div class="task-list" id="list-in-progress"></div>
         </div>
         <div class="column dropzone" data-status="completed" id="col-completed">
-            <h2>Completed</h2>
+            <h2>Completed <span id="count-completed">(0)</span></h2>
             <div class="task-list" id="list-completed"></div>
         </div>
     </main>
