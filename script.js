@@ -1,5 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 const taskForm = document.getElementById('taskForm');
+const searchInput = document.getElementById('searchInput');
+const filterCategory = document.getElementById('filterCategory');
 
 document.addEventListener('DOMContentLoaded', renderTasks);
 
@@ -18,6 +20,9 @@ taskForm.addEventListener('submit', (e) => {
     taskForm.reset();
 });
 
+searchInput.addEventListener('input', renderTasks);
+filterCategory.addEventListener('change', renderTasks);
+
 function saveAndRender() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
     renderTasks();
@@ -28,7 +33,16 @@ function renderTasks() {
     document.getElementById('list-in-progress').innerHTML = '';
     document.getElementById('list-completed').innerHTML = '';
 
-    tasks.forEach(task => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filterCat = filterCategory.value;
+
+    const filteredTasks = tasks.filter(task => {
+        const matchesSearch = task.title.toLowerCase().includes(searchTerm);
+        const matchesCat = filterCat === 'All' || task.category === filterCat;
+        return matchesSearch && matchesCat;
+    });
+
+    filteredTasks.forEach(task => {
         const taskEl = document.createElement('div');
         taskEl.className = `task-card priority-${task.priority}`;
         taskEl.innerHTML = `
