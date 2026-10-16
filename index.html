@@ -7,47 +7,62 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Top Navigation and Application Controls -->
     <header>
         <h1>Kanban Lite</h1>
         <div class="controls">
+            <!-- Search and Filter Tools -->
             <input type="text" id="searchInput" placeholder="Search tasks...">
             <select id="filterCategory">
                 <option value="All">All Categories</option>
                 <option value="Development">Development</option>
                 <option value="Design">Design</option>
+                <option value="Marketing">Marketing</option>
             </select>
-            <button id="themeToggle">🌓</button>
+            <!-- Dark Mode Toggle Button -->
+            <button id="themeToggle" aria-label="Toggle Dark Mode">🌓</button>
         </div>
     </header>
 
+    <!-- Task Creation Form Area -->
     <section class="form-section">
         <form id="taskForm">
             <input type="text" id="taskTitle" required placeholder="Task Title">
             <textarea id="taskDesc" required placeholder="Task Description"></textarea>
+            
             <select id="taskCategory">
                 <option value="Development">Development</option>
                 <option value="Design">Design</option>
+                <option value="Marketing">Marketing</option>
             </select>
+            
             <select id="taskPriority">
-                <option value="Low">Low</option>
-                <option value="Medium">Medium</option>
-                <option value="High">High</option>
+                <option value="Low">Low Priority</option>
+                <option value="Medium">Medium Priority</option>
+                <option value="High">High Priority</option>
             </select>
+            
             <button type="submit">Add Task</button>
         </form>
     </section>
 
-<main class="board">
+    <!-- Main Kanban Board -->
+    <main class="board">
+        <!-- To Do Column -->
         <div class="column dropzone" data-status="todo" id="col-todo">
-            <h2>To Do <span id="count-todo">(0)</span></h2>
+            <h2>To Do <span class="counter" id="count-todo">(0)</span></h2>
             <div class="task-list" id="list-todo"></div>
         </div>
+        
+        <!-- In Progress Column -->
         <div class="column dropzone" data-status="in-progress" id="col-in-progress">
-            <h2>In Progress <span id="count-in-progress">(0)</span></h2>
+            <h2>In Progress <span class="counter" id="count-in-progress">(0)</span></h2>
             <div class="task-list" id="list-in-progress"></div>
         </div>
+        
+        <!-- Completed Column -->
         <div class="column dropzone" data-status="completed" id="col-completed">
-            <h2>Completed <span id="count-completed">(0)</span></h2>
+            <h2>Completed <span class="counter" id="count-completed">(0)</span></h2>
             <div class="task-list" id="list-completed"></div>
         </div>
     </main>
