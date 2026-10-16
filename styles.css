@@ -23,3 +23,6 @@ form { display: flex; gap: 10px; flex-wrap: wrap; }
 .priority-High { border-left-color: #e74c3c; }
 .priority-Medium { border-left-color: #f39c12; }
 .priority-Low { border-left-color: #2ecc71; }
+.task-card { cursor: grab; }
+.dragging { opacity: 0.5; }
+.drag-over { border: 2px dashed #666; }
