@@ -1,5 +1,7 @@
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 const taskForm = document.getElementById('taskForm');
+
+document.addEventListener('DOMContentLoaded', renderTasks);
 
 taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -12,9 +14,14 @@ taskForm.addEventListener('submit', (e) => {
         status: 'todo'
     };
     tasks.push(newTask);
-    renderTasks();
+    saveAndRender();
     taskForm.reset();
 });
+
+function saveAndRender() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks();
+}
 
 function renderTasks() {
     document.getElementById('list-todo').innerHTML = '';
@@ -36,5 +43,5 @@ function renderTasks() {
 
 function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
-    renderTasks();
+    saveAndRender();
 }
